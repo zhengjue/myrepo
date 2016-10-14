@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - task@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="task">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="bbs"/>
+    <schema id="3" name="cmdb_v2"/>
+    <schema id="4" name="djangodb"/>
+    <schema id="5" name="echosite"/>
+    <schema id="6" name="information_schema"/>
+    <schema id="7" name="mysql"/>
+    <schema id="8" name="omserver"/>
+    <schema id="9" name="performance_schema"/>
+    <schema id="10" name="task1"/>
+    <schema id="11" name="test"/>
+    <table id="12" parent="1" name="department">
+      <comment>部门表</comment>
+    </table>
+    <table id="13" parent="1" name="item">
+      <comment>项目名</comment>
+    </table>
+    <table id="14" parent="1" name="item_reply">
+      <comment>任务回复表</comment>
+    </table>
+    <table id="15" parent="1" name="task">
+      <comment>任务表</comment>
+    </table>
+    <table id="16" parent="1" name="task_reply">
+      <comment>任务回复表</comment>
+    </table>
+    <table id="17" parent="1" name="user">
+      <comment>用户表</comment>
+    </table>
+    <column id="18" parent="12" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="19" parent="12" name="name">
+      <comment>部门名</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <key id="20" parent="12" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="21" parent="13" name="id">
+      <comment>项目ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="22" parent="13" name="name">
+      <comment>项目名</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="23" parent="13" name="userid">
+      <comment>项目创建人ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="24" parent="13" name="itype">
+      <comment>项目类型</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="25" parent="13" name="adddate">
+      <comment>项目创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="26" parent="13" name="startdate">
+      <comment>项目开始执行时间</comment>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="27" parent="13" name="enddate">
+      <comment>项目完成结束时间</comment>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="28" parent="13" name="content">
+      <comment>项目描述</comment>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="29" parent="13" name="status">
+      <comment>项目状态（等待、开始，完成）</comment>
+      <data-type>tinyint(4)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="30" parent="13" name="del_userid">
+      <comment>删除项目的用户ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="31" parent="13" name="del_status">
+      <comment>项目删除状态（0=删除，1=正常）</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4)|0</data-type>
+      <default-expression>&apos;1&apos;</default-expression>
+    </column>
+    <key id="32" parent="13" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="33" parent="14" name="id">
+      <comment>回复id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="34" parent="14" name="userid">
+      <comment>回复人id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="35" parent="14" name="content">
+      <comment>回复内容</comment>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="36" parent="14" name="editdate">
+      <comment>回复时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="37" parent="14" name="taskid">
+      <comment>所属任务表id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="38" parent="14" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="39" parent="15" name="id">
+      <comment>任务id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="40" parent="15" name="inputid">
+      <comment>任务发起人id</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="41" parent="15" name="inputdate">
+      <comment>任务发起时间</comment>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="42" parent="15" name="userid">
+      <comment>任务责任人用户（user）表id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="43" parent="15" name="depid">
+      <comment>任务责任人部门（department）表id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="44" parent="15" name="assistid">
+      <comment>任务协助人id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="45" parent="15" name="assdepid">
+      <comment>任务协助人部门（department）表id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="46" parent="15" name="subject">
+      <comment>任务主题</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(200)|0</data-type>
+    </column>
+    <column id="47" parent="15" name="content">
+      <comment>任务内容</comment>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="48" parent="15" name="status">
+      <comment>任务接收状态（0=末接、1=开始、2=结束）</comment>
+      <data-type>tinyint(3) unsigned zerofill|0</data-type>
+      <default-expression>&apos;000&apos;</default-expression>
+    </column>
+    <column id="49" parent="15" name="startdate">
+      <comment>任务开始时间（发单人规定任务开始时间）</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="50" parent="15" name="enddate">
+      <comment>任务结束时间（发单人规定任务结束时间）</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="51" parent="15" name="begindate">
+      <comment>任务接单时间（责任人任务接单时间）</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="52" parent="15" name="finishdate">
+      <comment>任务完成时间（责任人提交任务时间）</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="53" parent="15" name="evaluate">
+      <comment>发起人对任务评估</comment>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="54" parent="15" name="priority">
+      <comment>优先级 1-最低 2-普通 3-紧急</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4)|0</data-type>
+    </column>
+    <column id="55" parent="15" name="itemid">
+      <comment>关联项目的ID</comment>
+      <data-type>int(11) unsigned zerofill|0</data-type>
+    </column>
+    <column id="56" parent="15" name="departmentid">
+      <comment>关联的部门ID,即任务所属的部门</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="57" parent="15" name="del_userid">
+      <comment>删除任务人的用户ID</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="58" parent="15" name="del_status">
+      <comment>任务删除状态（0=删除，1=正常）</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;1&apos;</default-expression>
+    </column>
+    <key id="59" parent="15" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="60" parent="16" name="id">
+      <comment>回复id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="61" parent="16" name="userid">
+      <comment>回复人id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="62" parent="16" name="content">
+      <comment>回复内容</comment>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="63" parent="16" name="editdate">
+      <comment>回复时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="64" parent="16" name="taskid">
+      <comment>所属任务表id</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="65" parent="16" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="66" parent="17" name="id">
+      <comment>用户ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="67" parent="17" name="name">
+      <comment>姓名</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="68" parent="17" name="username">
+      <comment>帐号</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="69" parent="17" name="passwd">
+      <comment>密码</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="70" parent="17" name="phone">
+      <comment>电话</comment>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="71" parent="17" name="birthday">
+      <comment>生日</comment>
+      <data-type>varchar(20)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="72" parent="17" name="sex">
+      <comment>性别，女-0，男-1</comment>
+      <data-type>varchar(4)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="73" parent="17" name="qq">
+      <comment>qq</comment>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="74" parent="17" name="email">
+      <comment>邮箱</comment>
+      <data-type>varchar(50)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="75" parent="17" name="department">
+      <comment>所属部门ID</comment>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="76" parent="17" name="access">
+      <comment>权限</comment>
+      <data-type>tinyint(4)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="77" parent="17" name="image">
+      <comment>头像地址</comment>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="78" parent="17" name="adddate">
+      <comment>用户加入时间</comment>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="79" parent="17" name="status">
+      <comment>用户状态（0=删除，1=正常）</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(4)|0</data-type>
+      <default-expression>&apos;1&apos;</default-expression>
+    </column>
+    <key id="80" parent="17" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
