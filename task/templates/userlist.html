@@ -1,81 +1,28 @@
 {% extends "base/base.html" %}
-{% block title %} 运维后台管理系统 {% endblock %}
-{% block breadcrumbs %}
-<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-	<ul class="breadcrumb">
-		<li>
-			<i class="ace-icon fa fa-home home-icon"></i>
-			<a href="#">首页</a>
-		</li>
-		<li >用户管理</li>
-		<li class="active">用户管理</li>
-	</ul><!-- /.breadcrumb -->
+{% block title %} 用户管理 {% endblock %}
 
-	<!-- #section:basics/content.searchbox -->
-	<div class="nav-search" id="nav-search">
-		<form class="form-search">
-			<span class="input-icon">
-				<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-				<i class="ace-icon fa fa-search nav-search-icon"></i>
-			</span>
-		</form>
-	</div><!-- /.nav-search -->
-	<!-- /section:basics/content.searchbox -->
-</div>
-{% endblock %}
-
-{% block page-header %}
-<div class="page-header">
-	<h1>
-		用户管理
-		<!-- <i class="ace-icon fa fa-angle-double-right"></i> -->
-		<small>
-			<i class="ace-icon fa fa-angle-double-right"></i>
-			用户管理
-		</small>
-	</h1>
-</div><!-- /.page-header -->
-{% endblock %}
 
 {% block page-content %}
-<!-- PAGE CONTENT BEGINS -->
-    <div class="widget">
-	<div class="widget-header bordered-bottom bordered-themesecondary">
-	    <i class="widget-icon fa fa-tags themesecondary"></i>
-	    <span class="widget-caption themesecondary">用户列表</span>
-	    <div class="widget-buttons">
-		<a href="#" data-toggle="maximize">
-		    <i class="fa fa-expand"></i>
-		</a>
-		<a href="#" data-toggle="collapse">
-		    <i class="fa fa-minus"></i>
-		</a>
-		<a href="#" data-toggle="dispose">
-		    <i class="fa fa-times"></i>
-		</a> 
-	    </div>
 
-	</div><!--Widget Header-->
-	<div style="padding:-10px 0px;" class="widget-body no-padding">
-	    <div class="tickets-container">
-		<div class="table-toolbar" style="float:left">
-		    <a id="adduser" href="javascript:void(0);" class="btn  btn-primary ">
-			<i class="btn-label fa fa-plus"></i>添加用户
-		    </a>
-		    <a id="changeuser" href="javascript:void(0);" class="btn btn-warning shiny">
-			<i class="btn-label fa fa-cog"></i>修改用户
-		    </a>
-		    <a id="deluser" href="javascript:void(0);" class="btn btn-darkorange">
-			<i class="btn-label fa fa-times"></i>删除用户
-		    </a>
-		</div>
-		<!-- 数据表格，使用juqery UI生成 -->
-	       <table id="myLoadTable" class="table table-bordered table-hover"></table>
-	    </div>
+<div class="widget">
+<div style="padding:-10px 0px;" class="widget-body no-padding">
+    <div class="tickets-container">
+	<div class="table-toolbar" style="float:left">
+	    <a id="adduser" href="javascript:void(0);" class="btn  btn-primary ">
+		<i class="btn-label fa fa-plus"></i>添加用户
+	    </a>
+	    <a id="changeuser" href="javascript:void(0);" class="btn btn-warning shiny">
+		<i class="btn-label fa fa-cog"></i>修改用户
+	    </a>
+	    <a id="deluser" href="javascript:void(0);" class="btn btn-darkorange">
+		<i class="btn-label fa fa-times"></i>删除用户
+	    </a>
 	</div>
+       <table id="myLoadTable" class="table table-bordered table-hover"></table>
     </div>
+</div>
+</div>
 
-<!--添加对话框的模型-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" >
       <div class="modal-content" id="contentDiv">
@@ -104,20 +51,20 @@
                   <input type="text" class="form-control" id="birthday" name="birthday">
                 </div>
                 <div class="form-group">
-                	<label class="control-label" for="inputSuccess1">性别：</label>
-		  	<select id="sex" style="width:100%;" name="sex">
-                    	<option value='女'>女</option>
-                    	<option value='男'>男</option>
-                 	</select>
+                  <label class="control-label" for="inputSuccess1">性别：</label>
+				  <select id="sex" style="width:100%;" name="sex">
+                    <option value='女'>女</option>
+                    <option value='男'>男</option>
+                 </select>
                 </div>
-		<div class="form-group">
-                  	<label class="control-label" for="inputSuccess1">部门：</label>
-		  	<select id="department" style="width:100%;" name="department">
-                    	<option value=''>请选择部门</option>
-		    		{% for name in department_result %}
-                        		<option value='{{name.id}}'>{{name.name}}</option>
-		   		{% endfor %}
-                  	</select>
+				<div class="form-group">
+                  <label class="control-label" for="inputSuccess1">部门：</label>
+				  <select id="department" style="width:100%;" name="department">
+                    <option value=''>请选择部门</option>
+                    %for name in department_result:
+                        <option value='{{name.id}}'>{{name.name}}</option>
+                    %end
+                 </select>
                 </div>
                 <div class="form-group">
                   <label class="control-label" for="inputSuccess1">QQ号：</label>
@@ -147,6 +94,8 @@
       </div>
    </div>
 </div>
+{% endblock %}
+{% block my_js %}
 <script type="text/javascript">
 $(function(){
     /**
@@ -370,6 +319,4 @@ $(function(){
 
 })
 </script>
-
-<!-- PAGE CONTENT ENDS -->
 {% endblock %}

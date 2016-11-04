@@ -2,3 +2,15 @@
 .mynoline{
 	display : inline;
 }
+
+.ace-nav > li > a {
+    background-color: #c6487e;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #c6487e;
+    border-color: #337ab7;
+}
+.ace-nav > li > a:hover, .ace-nav > li > a:focus, .ace-nav > li.open > a {
+    background-color: #d15b47;
+    color: #333;
+}

@@ -8,12 +8,13 @@
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 		{% include "base/base_css.html" %}
+		{% block my_css %}{% endblock %}
 
 	</head>
 
-	<body class="no-skin">
+	<body class="skin-2">
 		<!-- #section:basics/navbar.layout -->
-
+		<!-- 1,导航条 -->
 		{% include "base/base_navbar.html" %}
 		<!-- /section:basics/navbar.layout -->
 		<div class="main-container ace-save-state" id="main-container">
@@ -22,23 +23,25 @@
 			</script>
 
 			<!-- #section:basics/sidebar -->
+			<!-- 2.1侧边栏 -->
 			{% include "base/base_sidebar.html" %}
 
 			<!-- /section:basics/sidebar -->
 			<div class="main-content">
 				<div class="main-content-inner">
 					<!-- #section:basics/content.breadcrumbs -->
+					<!-- 2.2.1 面包屑导航 -->
 					{% block breadcrumbs %}{% endblock %}
 			<!-- /section:basics/content.breadcrumbs -->
 					<div class="page-content">
 						<!-- #section:settings.box -->
 						<!--设置框-->
-						{% include "base/base_setting_box.html" %}
-
+						<!-- 2.2.2.1 属性设置框 -->
 
 						<!-- /section:settings.box -->
-						{% block page-header %}{% endblock %}
+						<!-- 2.2.2.2 正文主体 -->
 
+						{% block page-header %}{% endblock %}
 
 						<div class="row">
 							<div class="col-xs-12">
@@ -63,5 +66,6 @@
 		<!-- basic scripts -->
 
 		{% include "base/base_js.html" %}
+		{% block my_js %}{% endblock %}
 	</body>
 </html>

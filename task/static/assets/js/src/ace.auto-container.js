@@ -1,4 +1,4 @@
-/**
+/*
  <b>Auto Container</b> Adds .container when window size is above 1140px.
  In Bootstrap you should stick with fixed width breakpoints.
  You can use this feature to enable fixed container only when window size is above 1140px

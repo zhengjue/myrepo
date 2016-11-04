@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+{% block title %} 运维后台管理系统 {% endblock %}
+{% block breadcrumbs %}
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+	<ul class="breadcrumb">
+		<li>
+			<i class="ace-icon fa fa-home home-icon"></i>
+			<a href="#">首页</a>
+		</li>
+		<li >用户管理</li>
+		<li class="active">用户管理</li>
+	</ul><!-- /.breadcrumb -->
+
+	<!-- #section:basics/content.searchbox -->
+	<div class="nav-search" id="nav-search">
+		<form class="form-search">
+			<span class="input-icon">
+				<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+				<i class="ace-icon fa fa-search nav-search-icon"></i>
+			</span>
+		</form>
+	</div><!-- /.nav-search -->
+	<!-- /section:basics/content.searchbox -->
+</div>
+{% endblock %}
+
+{% block page-header %}
+<div class="page-header">
+	<h1>
+		用户管理
+		<!-- <i class="ace-icon fa fa-angle-double-right"></i> -->
+		<small>
+			<i class="ace-icon fa fa-angle-double-right"></i>
+			用户管理
+		</small>
+	</h1>
+</div><!-- /.page-header -->
+{% endblock %}
+
+{% block page-content %}
+<!-- PAGE CONTENT BEGINS -->
+
+<!-- PAGE CONTENT ENDS -->
+{% endblock %}

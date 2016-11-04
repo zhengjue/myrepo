@@ -9,3 +9,7 @@ def index(request):
 def userlist(request):
     return render_to_response("userlist.html")
 
+
+def login(request):
+    return render_to_response("login.html")
+
