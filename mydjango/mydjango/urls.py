@@ -1,3 +1,4 @@
+# _*_ coding:utf-8 _*_
 """mydjango URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,10 +14,18 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url,include
+from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework import routers
+from restful import views
+import restful
 
+
+# 使用URL路由来管理我们的API
+# 另外添加登录相关的URL
 urlpatterns = [
+    #  url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^web/', include('web.urls')),
+    url(r'', include('restful.urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

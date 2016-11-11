@@ -53,6 +53,7 @@ router.register(r'users', UserViewSet)
 router.register(r'tests', TestViewSet)
 
 urlpatterns = [
+    url(r'server/',views.servers),
     url(r'index/', views.index),
     url(r'userlist/', views.userlist),
     url(r'login/', views.login),
