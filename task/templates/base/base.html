@@ -17,41 +17,33 @@
 		<!-- 1,导航条 -->
 		{% include "base/base_navbar.html" %}
 		<!-- /section:basics/navbar.layout -->
-		<div class="main-container ace-save-state" id="main-container">
+		<div class="main-container ace-save-state my-main-container" id="main-container">
 			<script type="text/javascript">
 				try{ace.settings.loadState('main-container')}catch(e){}
 			</script>
 
 			<!-- #section:basics/sidebar -->
-			<!-- 2.1侧边栏 -->
+			<!-- 2.1左边侧边栏 -->
 			{% include "base/base_sidebar.html" %}
 
 			<!-- /section:basics/sidebar -->
+			<!-- 2.2 右边主要内容区域 -->
 			<div class="main-content">
 				<div class="main-content-inner">
 					<!-- #section:basics/content.breadcrumbs -->
 					<!-- 2.2.1 面包屑导航 -->
 					{% block breadcrumbs %}{% endblock %}
-			<!-- /section:basics/content.breadcrumbs -->
-					<div class="page-content">
+					<!-- 2.2.2 右边页面内容 -->
+					<div class="page-content ">
 						<!-- #section:settings.box -->
 						<!--设置框-->
-						<!-- 2.2.2.1 属性设置框 -->
-
+						<!-- 2.2.2.1 页面头 -->
+						{% block page-header %}{% endblock %}
 						<!-- /section:settings.box -->
 						<!-- 2.2.2.2 正文主体 -->
 
-						{% block page-header %}{% endblock %}
-
-						<div class="row">
-							<div class="col-xs-12">
-								<!--PAGE CONTENT BEGIN-->
-								{% block page-content %}{% endblock %}
-
-
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
+						<!--PAGE CONTENT BEGIN-->
+						{% block page-body %}{% endblock %}
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->

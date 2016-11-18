@@ -14,3 +14,19 @@
     background-color: #d15b47;
     color: #333;
 }
+.my-main-container{
+	padding-top: 45px;
+}
+.skin-2 .breadcrumbs {
+  border-radius: 0px;
+  margin: 0;
+}
+.page-content {
+    margin-left: 0;
+}
+@media (min-width: 992px) {
+  .skin-2 .breadcrumbs.breadcrumbs-fixed + .page-content {
+    padding-top: 41px;
+  }
+}
+

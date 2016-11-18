@@ -16,46 +16,22 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from app1 import views
-# restfull####################
-from django.contrib.auth.models import User
-from rest_framework import routers, serializers, viewsets
-from app1 import models
-
-# ##################### User start
-# Serializers define the API representation.
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('url', 'username', 'email', 'is_staff')
+from rest_framework import routers
 
 
-# ViewSets define the view behavior.
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-#################User end##########
-
-#######Test start#################
-class TestSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = models.Test
-        fields = ('url',  'username', 'password')
-
-
-# ViewSets define the view behavior.
-class TestViewSet(viewsets.ModelViewSet):
-    queryset = models.Test.objects.all()
-    serializer_class = TestSerializer
-#######Test end#############
-# Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'tests', TestViewSet)
+router.register(r'items', views.ItemViewSet)
+router.register(r'users', views.UserViewSet)
+router.register(r'departments', views.DepartmentViewSet)
+router.register(r'tasks', views.TaskViewSet)
+router.register(r'task_replys', views.Task_replyViewSet)
+router.register(r'ttem_replys', views.Item_replyViewSet)
 
 urlpatterns = [
-    url(r'server/',views.servers),
-    url(r'index/', views.index),
-    url(r'userlist/', views.userlist),
-    url(r'login/', views.login),
+    url(r'^index/$', views.Index),
+    url(r'^test/$', views.Test),
+    url(r'^getuser/$', views.User),
     url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
 ]

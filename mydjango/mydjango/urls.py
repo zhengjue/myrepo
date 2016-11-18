@@ -18,7 +18,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
 from restful import views
-import restful
 
 
 # 使用URL路由来管理我们的API
@@ -26,6 +25,5 @@ import restful
 urlpatterns = [
     #  url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'', include('restful.urls')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/', include('restful.urls')),
 ]
