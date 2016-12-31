@@ -1,0 +1,117 @@
+{% extends "base/base.html"%}
+{% load staticfiles %}
+{% block title %} 运维后台管理系统 {% endblock %}
+
+<!-- Page Breadcrumb -->
+{% block breadcrumbs %}
+<div class="page-breadcrumbs">
+	<ul class="breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+			<a href="#">首页</a>
+		</li>
+		<li>
+			<a href="#">部署管理</a>
+		</li>
+		<li class="active">模块部署</li>
+	</ul>
+</div>
+{% endblock %}
+<!-- /Page Breadcrumb -->
+
+
+<!-- Page Header -->
+{% block page_header %}
+<div class="page-header position-relative">
+	<div class="header-title">
+		<h1>
+                            模块部署
+               </h1>
+	</div>
+	<!--Header Buttons-->
+	<div class="header-buttons">
+		<a class="sidebar-toggler" href="#">
+			<i class="fa fa-arrows-h"></i>
+		</a>
+		<a class="refresh" id="refresh-toggler" href="">
+			<i class="glyphicon glyphicon-refresh"></i>
+		</a>
+		<a class="fullscreen" id="fullscreen-toggler" href="#">
+			<i class="glyphicon glyphicon-fullscreen"></i>
+		</a>
+	</div>
+	<!--Header Buttons End-->
+</div>
+{% endblock %}
+<!-- /Page Header -->
+
+
+<!-- Page Body -->
+{% block page_body %}
+<div class="page-body">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                 <div class="panel panel-default">
+                      <div class="panel-body">
+                             <form class="form-horizontal form-border" method="post" enctype="multipart/form-data" action="/deploy/module_deploy/?action=deploy">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">目标主机</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="tgt" value={{ tgt }}>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-3 control-label">安装模块</label>
+                                          <div class="col-sm-6">
+                                               <label class="checkbox-inline">
+                                                   <input class="icheck" type="checkbox" checked="" value="nginx" name="module">Nginx</label>
+                                               <label class="checkbox-inline">
+                                                   <input class="icheck" type="checkbox" value="php" name="module">PHP</label>
+                                               <label class="checkbox-inline">
+                                                   <input class="icheck" type="checkbox" value="mysql" name="module">MySQL</label>
+                                               <label class="checkbox-inline">
+                                                   <input class="icheck" type="checkbox" value="redis" name="module">Redis</label>
+                                               <label class="checkbox-inline">
+                                                   <input class="icheck" type="checkbox" value="memcached" name="module">Memcached</label>
+                                               <label class="checkbox-inline">
+                                                   <input class="icheck" type="checkbox" value="zabbix" name="module">Zabbix</label>
+                                               <label class="checkbox-inline">
+                                                   <input class="icheck" type="checkbox" value="logstash" name="module">日志采集</label>
+                                               <label class="checkbox-inline">
+                                                   <input class="icheck" type="checkbox" value="sysinit" name="module">初始化</label>
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                         <input type="hidden" name="mod" value={{ module }}>
+                                         <div class="col-sm-offset-8 col-sm-10">
+                                              <button type="submit" class="btn btn-primary">提交</button>
+                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-3 control-label">返回结果</label>
+                                          <div class="col-sm-6">
+                                               <textarea class="form-control" rows="10">{{ ret }}</textarea>
+                                          </div>
+                                    </div>
+                             </form>
+                      </div>
+                 </div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+<!-- /Page Body -->
+
+<!--Page Related Scripts-->
+{% block page_rateled %}
+
+<!--index page only js -->
+    <!-- <script src="{% static "assets/js/jquery-2.0.3.min.js" %}"></script> -->
+
+
+<!--index page only script -->
+<script>
+</script>
+{% endblock %}
+<!--Page Related Scripts-->

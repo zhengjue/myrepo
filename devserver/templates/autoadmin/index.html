@@ -1,0 +1,94 @@
+{% extends "base/base.html"%}
+{% load staticfiles %}
+{% block title %} 运维后台管理系统 {% endblock %}
+
+<!-- Page Breadcrumb -->
+{% block breadcrumbs %}
+<div class="page-breadcrumbs">
+	<ul class="breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+			<a href="#">首页</a>
+		</li>
+		<li class="active">仪表</li>
+	</ul>
+</div>
+{% endblock %}
+<!-- /Page Breadcrumb -->
+
+
+<!-- Page Header -->
+{% block page_header %}
+<div class="page-header position-relative">
+	<div class="header-title">
+		<h1>
+                            仪表
+	        </h1>
+	</div>
+	<!--Header Buttons-->
+	<div class="header-buttons">
+		<a class="sidebar-toggler" href="#">
+			<i class="fa fa-arrows-h"></i>
+		</a>
+		<a class="refresh" id="refresh-toggler" href="">
+			<i class="glyphicon glyphicon-refresh"></i>
+		</a>
+		<a class="fullscreen" id="fullscreen-toggler" href="#">
+			<i class="glyphicon glyphicon-fullscreen"></i>
+		</a>
+	</div>
+	<!--Header Buttons End-->
+</div>
+{% endblock %}
+<!-- /Page Header -->
+
+
+<!-- Page Body -->
+{% block page_body %}
+<div class="page-body">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="databox radius-bordered databox-shadowed databox-graded">
+						<div class="databox-left bg-themesecondary">
+							<div class="databox-piechart">
+								<div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="50" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="rgba(255,255,255,0.1)"><span class="white font-90">50%</span></div>
+							</div>
+						</div>
+						<div class="databox-right">
+							<span class="databox-number themesecondary">14</span>
+							<div class="databox-text darkgray">NEW TASKS</div>
+							<div class="databox-stat themesecondary radius-bordered">
+								<i class="stat-icon icon-lg fa fa-tasks"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+	</div>
+
+	<div class="row">
+	</div>
+	<div class="row">
+
+	</div>
+</div>
+{% endblock %}
+<!-- /Page Body -->
+
+<!--Page Related Scripts-->
+{% block page_rateled %}
+
+<!--index page only js -->
+    <!-- <script src="{% static "assets/js/jquery-2.0.3.min.js" %}"></script> -->
+
+
+<!--index page only script -->
+<script>
+</script>
+{% endblock %}
+<!--Page Related Scripts-->

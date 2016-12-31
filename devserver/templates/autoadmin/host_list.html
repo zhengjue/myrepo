@@ -1,0 +1,132 @@
+{% extends "base/base.html"%}
+{% load staticfiles %}
+{% block title %} 运维后台管理系统 {% endblock %}
+{% block my_css %}
+<link rel="stylesheet" href="{% static "assets/plugins/dataTables/css/dataTables.css" %}">
+{% endblock %}
+
+<!-- Page Breadcrumb -->
+{% block breadcrumbs %}
+<div class="page-breadcrumbs">
+	<ul class="breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+			<a href="#">首页</a>
+		</li>
+		<li>
+			<a href="#">资产管理</a>
+		</li>
+		<li class="active">
+			主机列表
+		</li>
+	</ul>
+</div>
+{% endblock %}
+<!-- /Page Breadcrumb -->
+
+
+<!-- Page Header -->
+{% block page_header %}
+<div class="page-header position-relative">
+	<div class="header-title">
+		<h1>
+                主机列表
+        	</h1>
+	</div>
+	<!--Header Buttons-->
+	<div class="header-buttons">
+		<a class="sidebar-toggler" href="#">
+			<i class="fa fa-arrows-h"></i>
+		</a>
+		<a class="refresh" id="refresh-toggler" href="">
+			<i class="glyphicon glyphicon-refresh"></i>
+		</a>
+		<a class="fullscreen" id="fullscreen-toggler" href="#">
+			<i class="glyphicon glyphicon-fullscreen"></i>
+		</a>
+	</div>
+	<!--Header Buttons End-->
+</div>
+{% endblock %}
+<!-- /Page Header -->
+
+
+<!-- Page Body -->
+{% block page_body %}
+<div class="page-body">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                 <div class="panel panel-default">
+                      <div class="panel-body">
+                           {% if all_host_list %}
+                           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                               <thead>
+                                   <tr>
+                                      <th>ID</th>
+                                      <th>IP地址</th>
+                                      <th>主机名</th>
+                                      <th>产品</th>
+                                      <th>应用</th>
+                                      <th>机柜编号</th>
+                                      <th>使用状态</th>
+                                      <th>备注</th>
+                                      <th>操作</th>
+                                   </tr>
+                               </thead>
+
+                               <tbody>
+                               {% for all_host in all_host_list %}
+                                   <tr>
+                                      <td>{{ forloop.counter }}</td>
+                                      <td>{{ all_host.ip }}</td>
+                                      <td>{{ all_host.hostname }}</td>
+                                      <td>{{ all_host.product }}</td>
+                                      <td>{{ all_host.application }}</td>
+                                      <td>{{ all_host.idc_jg }}</td>
+                                      <td>{{ all_host.status }}</td>
+                                      <td>{{ all_host.remark }}</td>
+                                      <td><a href="{% url 'host_manage' id=all_host.id %}" class="btn btn-info btn-sm">编辑</a>
+                                          <a href="/asset/host_delete/?id={{ all_host.id }}&delete=1" style="color:white" class="btn btn-danger btn-sm" role="button">删除</a>
+                                      </td>
+                                   </tr>
+                               {% endfor %}
+                               </tbody>
+                            </table>
+                           {% endif %}
+                            <div class="row">
+                                 <div class="col-xs-6">
+                                       <div class="dataTables_info" id="example_info" role="alert" aria-live="polite" aria-relevant="all"></div>
+                                 </div>
+                                 <div class="col-xs-6">
+                                      <div class="dataTables_paginate paging_simple_numbers" id="exmaple_paginate">
+                                           <a href="{% url 'add_host' %}" class="btn btn-info btn-sm" role="button">添加</a>
+                                           {% if all_host_list.has_previous %}
+                                                <a href="?page={{ all_host_list.previous_page_number }}">上一页</a>
+                                           {% endif %}
+                                           <span class="current">
+                                                第{{ all_host_list.number }}页，共{{ all_host_list.paginator.num_pages }}页
+                                           </span>
+                                           {% if all_host_list.has_next %}
+                                                <a href="?page={{ all_host_list.next_page_number }}">下一页</a>
+                                           {% endif %}
+                                      </div>
+                                 </div>
+                           </div> <!--row end-->
+                         </div>
+                     </div>
+                 </div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+<!-- /Page Body -->
+
+<!--Page Related Scripts-->
+{% block page_rateled %}
+<!--index page only js -->
+    <!-- <script src="{% static "assets/js/jquery-2.0.3.min.js" %}"></script> -->
+<!--index page only script -->
+	<script>
+	</script>
+{% endblock %}
+<!--Page Related Scripts-->

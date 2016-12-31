@@ -1,0 +1,119 @@
+{% extends "base/base.html"%}
+{% load staticfiles %}
+{% block title %} 运维后台管理系统 {% endblock %}
+{% block my_css %}
+<!-- iCheck-->
+<link rel="stylesheet" href="{% static "assets/plugins/icheck/css/_all.css" %}">
+{% endblock %}
+<!-- Page Breadcrumb -->
+{% block breadcrumbs %}
+<div class="page-breadcrumbs">
+	<ul class="breadcrumb">
+		<li>
+			<i class="fa fa-home"></i>
+			<a href="#">首页</a>
+		</li>
+		<li>
+			<a href="#">部署管理</a>
+		</li>
+		<li class="active">代码发布</>
+	</ul>
+</div>
+{% endblock %}
+<!-- /Page Breadcrumb -->
+
+
+<!-- Page Header -->
+{% block page_header %}
+<div class="page-header position-relative">
+	<div class="header-title">
+		<h1>
+                            代码发布
+        </h1>
+	</div>
+	<!--Header Buttons-->
+	<div class="header-buttons">
+		<a class="sidebar-toggler" href="#">
+			<i class="fa fa-arrows-h"></i>
+		</a>
+		<a class="refresh" id="refresh-toggler" href="">
+			<i class="glyphicon glyphicon-refresh"></i>
+		</a>
+		<a class="fullscreen" id="fullscreen-toggler" href="#">
+			<i class="glyphicon glyphicon-fullscreen"></i>
+		</a>
+	</div>
+	<!--Header Buttons End-->
+</div>
+{% endblock %}
+<!-- /Page Header -->
+
+
+<!-- Page Body -->
+{% block page_body %}
+<div class="page-body">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                 <div class="panel panel-default">
+                      <div class="panel-body">
+                             <form class="form-horizontal form-border" method="post" enctype="multipart/form-data" action="/deploy/code_deploy/?action=push">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">项目</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="project" value={{ project }}>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">代码url</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="url" value={{ url }}>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">版本号</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="version" value={{ version }}>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">部署环境</label>
+                                        <div class="col-sm-6">
+                                            <label class="radio-inline">
+                                                <input class="icheck" type="radio" checked="" name="env" value="beta">测试</label>
+                                            <label class="radio-inline">
+                                                <input class="icheck" type="radio" name="env" value="ga">正式</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="col-sm-3 control-label">返回结果</label>
+                                          <div class="col-sm-6">
+                                               <textarea class="form-control">{{ ret }}</textarea>
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                         <div class="col-sm-offset-8 col-sm-10">
+                                              <button type="submit" class="btn btn-primary">推送</button>
+                                         </div>
+                                    </div>
+                             </form>
+                      </div>
+                 </div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+<!-- /Page Body -->
+
+<!--Page Related Scripts-->
+{% block page_rateled %}
+
+<!--index page only js -->
+    <!-- <script src="{% static "assets/js/jquery-2.0.3.min.js" %}"></script> -->
+
+
+<!--index page only script -->
+<script>
+</script>
+{% endblock %}
+<!--Page Related Scripts-->
